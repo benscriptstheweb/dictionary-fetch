@@ -11,6 +11,7 @@
     }
     
     export { deleteItem };
+    export let isDarkMode: boolean = false;
     
     function deleteItem(item: string) {
         localStorage.removeItem(item);
@@ -18,44 +19,35 @@
     }
 </script>
 
-<main>
-    <div class="bookmark-card">
+<div class="bookmark-card" class:dark={isDarkMode}>
+    {#if $bookmarkedWords.length !== 0}
         <h3>Bookmarked</h3>
+    {/if}
     
-        {#if $bookmarkedWords.length === 0}
-            <div class="empty-art">
-            _-  (\(\   .+<br>
-            +   ( -.-).zZ<br>
-            .  O(")(") ___
-            <p class="empty-message">Wow, such empty!</p>
-            </div>
-        {/if}
-        
-        {#each $bookmarkedWords as item}
-            <div on:click={() => defineBookmarkedWord(item)} class="entry">
-                <span>{item}</span>
-                <span class="delete-button" on:click|stopPropagation={() => deleteItem(item)}>✖</span>
-            </div>
-        {/each}
-    </div>
-</main>
+    {#each $bookmarkedWords as item}
+        <div on:click={() => defineBookmarkedWord(item)} class="entry">
+            <span>{item}</span>
+            <span class="delete-button" on:click|stopPropagation={() => deleteItem(item)}>✖</span>
+        </div>
+    {/each}
+</div>
 
-<style>
-    main {
-        margin: 0 30px 0 30px;
+<style>   
+    .bookmark-card {
+        margin: 20px 30px 0 30px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
     }
-    
+    .bookmark-card.dark {
+        color: white;
+    }
+        
     h3 {
-        text-align: left;
+        text-align: center;
         color: rgb(156, 179, 199);
         margin-top: 50px;
         font-weight: 100;
-    }
-
-    .bookmark-card {
-        max-width: 600px;
-        margin: 0 auto;
-        text-align: left;
     }
 
     .entry {
@@ -66,7 +58,7 @@
         margin: 0 20px 20px 0;
         padding: 7px 14px;
         border-radius: 25px;
-        border: 1px solid rgb(175, 197, 216);
+        border: 1.5px solid rgb(175, 197, 216);
     }
     .entry:hover {
         color: white;
@@ -87,12 +79,5 @@
         font-size: 15px;
         background-color: #ff3e00;
         color: white;
-    }
-
-    .empty-art {
-        color: rgb(175, 197, 216);
-        width: 80px;
-        margin: 0 auto;
-        margin-top: 50px;
     }
 </style>

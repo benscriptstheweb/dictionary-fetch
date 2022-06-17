@@ -5,6 +5,7 @@
 
     export let bookmarked: boolean = false;
     export let visible: boolean = false;
+    export let isDarkMode: boolean = false;
     export let bookmarkComponent: any;
     export let definitionObject: any;
     
@@ -27,7 +28,7 @@
     }
 </script>
 
-<div transition:fly={{y:80}} class="definition-card">
+<div transition:fly={{y:80}} class="definition-card" class:dark={isDarkMode}>
     <p class="definition-head">
         <span class="definition-title">{definitionObject.title}</span><span class="definition-phonetic">{definitionObject.phonetic}</span>
     </p>
@@ -66,6 +67,10 @@
         background-color: white;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         transition: opacity 0.2s ease-in-out;
+    }
+    .definition-card.dark {
+        background-color: #162a36;
+        color: white;
     }
     .definitions {
         margin-bottom: 40px;
