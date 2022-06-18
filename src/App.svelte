@@ -79,7 +79,7 @@
 	<div transition:fade={{ duration: 200 }} on:click={() => cardIsVisible = false} class="blur"></div>
 {/if}
 
-<div class="dark-mode-btn" on:click={() => toggleDarkMode()}>
+<div class="dark-mode-btn" class:clicked={darkMode} on:click={() => toggleDarkMode()}>
 	{#if !darkMode}
 		🌞
 	{:else}
@@ -126,6 +126,10 @@
 		font-size: 30px;
 		cursor: pointer;
 	}
+	.dark-mode-btn.clicked {
+		animation: flip;
+		animation-duration: 0.4s;
+	}
 
 	:global(body) {
 		background-color: #fff;
@@ -146,6 +150,7 @@
 
 	img {
         padding-top: 30px;
+		mix-blend-mode: luminosity;
 	}
 
 	form {

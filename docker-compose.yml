@@ -1,0 +1,19 @@
+version: '3.2'
+
+services:
+  define-me:
+    container_name: define-me
+    build: .
+    expose:
+      - 5000
+    environment:
+      - HOST=0.0.0.0
+    ports:
+      - 5000:8080
+    command: npm start
+
+  e2e-electron:
+    image: "cypress/included:4.1.0"
+    volumes:
+      - ./cypress/e2e:/cypress
+      - ./cypress.json:/cypress.json
