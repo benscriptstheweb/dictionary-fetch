@@ -9,11 +9,12 @@ services:
     environment:
       - HOST=0.0.0.0
     ports:
-      - 5000:8080
-    command: npm start
+      - 8081:8080
+    command: npm start & wait-on http://localhost:8081 & wait-on http://localhost:8080
 
-  e2e-electron:
-    image: "cypress/included:4.1.0"
+  cypress:
+    container_name: cypress
+    image: "cypress/browsers:node14.19.0-chrome100-ff99-edge"
     volumes:
-      - ./cypress/e2e:/cypress
-      - ./cypress.json:/cypress.json
+     - ./cypress:/cypress
+    command: npx cypress run
