@@ -3,6 +3,7 @@
 	import Bookmark from "./Bookmark.svelte";
 	import { bookmarkedWords } from "./store.js";
 	import { fade, slide } from "svelte/transition";
+	import VideoPlayer from "./VideoPlayer.svelte";
 
 	let darkMode: boolean = false;
 	let cardIsVisible:boolean = false;
@@ -88,6 +89,8 @@
 </div>
 
 <div class="main">
+	<VideoPlayer/>
+
 	<div class="img">
 		<img width="200" src="/main.png" alt="No Bookmarks Found"/>
 	</div>
