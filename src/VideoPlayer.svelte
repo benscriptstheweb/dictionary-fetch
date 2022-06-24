@@ -6,10 +6,10 @@
     <link href="https://vjs.zencdn.net/7.19.2/video-js.css" rel="stylesheet" />
 </svelte:head>
 <div>   
-    <video id="vid1" class="vjs-matrix video-js" controls preload="auto" poster="MY_VIDEO_POSTER.jpg">
+    <video id="vid1" class="video-js" controls preload="auto" poster="/forest.png">
         <track kind="captions">
         <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4" />
-        <source src="/vjs.zencdn.net/v/oceans.webm" type="video/webm" />
+        <source src="//vjs.zencdn.net/v/oceans.webm" type="video/webm" />
         
         <p class="vjs-no-js">
         To view this video please enable JavaScript, and consider upgrading to a
@@ -18,7 +18,7 @@
         </p>
     </video>
     <br>
-    <audio id="audio_example" class="video-js vjs-default-skin" controls preload="auto" width="600" height="600" poster="/img/awesome-album-art.png">
+    <audio id="audio_example" class="video-js" controls preload="auto" poster="/forest.png">
         <source src="/chimes.mp3" type='audio/mp3' />
     </audio>
 </div>
@@ -27,9 +27,13 @@
     #vid1 {
         width: 630px;
         height: 264px;
+        border-radius: 10px;
+        margin: 0 auto;
     }
     #audio_example {
-        width: 500px;
-        height: 500px;
+        width: 300px;
+        height: 300px;
+        border-radius: 10px;
+        margin: 0 auto;
     }
 </style>
