@@ -45,6 +45,13 @@
     display: block !important;
 }
 
+.video-js .vjs-text-track-display > div > div div {
+    display: inline-block !important;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
 @media only screen and (max-width: 600px) {
     .video-js .vjs-control-bar {
         background-color: rgba(190, 190, 190, 0.5);;
