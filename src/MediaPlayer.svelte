@@ -26,7 +26,6 @@
         mediaPlayer = await videojs(mediaID, {
             controls: true,
             preload: 'auto',
-            // fluid: true,
             controlBar: {
                 durationDisplay: false,
                 progressControl: false,
