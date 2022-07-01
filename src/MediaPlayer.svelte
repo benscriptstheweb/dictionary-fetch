@@ -26,6 +26,7 @@
         mediaPlayer = await videojs(mediaID, {
             controls: true,
             preload: 'auto',
+            fluid: true,
             controlBar: {
                 durationDisplay: false,
                 progressControl: false,
@@ -83,18 +84,12 @@
 </svelte:head>
 
 {#if mediaType === 'video'}
-<div>
     <video-js id={mediaID} class="video-js vjs-big-play-centered" poster="/screen.png">
         <track src="https://d34ji3l0qn3w2t.cloudfront.net/9bdbc547-6303-40a2-a283-ff11fbaf7197/1/mwbv_E_202205_07.vtt" kind="subtitles" srclang="en" label="English"/>
         <source src="https://d34ji3l0qn3w2t.cloudfront.net/e698b557-0f22-4979-91b3-41a62c563712/1/mwbv_E_202205_07_r720P.mp4" type="video/mp4" />
     </video-js>
-    <br>
-</div>
 {:else if mediaType === 'audio'}
-    <div>   
-        <video-js id={mediaID} class="video-js audio-video-js">
-            <source src="/chimes.mp3" type="audio/mp3" />
-        </video-js>
-        <br>
-    </div>
+    <video-js id={mediaID} class="video-js vjs-big-play-centered audio-video-js" poster="/aud.png">
+        <source src="/chimes.mp3" type="audio/mp3" />
+    </video-js>
 {/if}

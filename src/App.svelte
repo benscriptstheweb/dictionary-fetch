@@ -99,6 +99,7 @@
     </form>
 
 	<MediaPlayer darkMode={darkMode} mediaID="A" mediaType="video"/>
+	<MediaPlayer darkMode={darkMode} mediaID="B" mediaType="audio"/>
 	
 	{#if wordError}
 		<div transition:slide class="error-message">⚠ Please check spelling!</div>
