@@ -26,14 +26,14 @@
         mediaPlayer = await videojs(mediaID, {
             controls: true,
             preload: 'auto',
-            fluid: true,   
+            // fluid: true,
             controlBar: {
                 durationDisplay: false,
                 progressControl: false,
                 remainingTimeDisplay: false,
                 playToggle: false,
                 volumePanel: false,
-                subsCapsButton: true,
+                subsCapsButton: false,
                 pictureInPictureToggle: false,
                 fullscreenToggle: false,
             },
@@ -86,7 +86,8 @@
 {#if mediaType === 'video'}
 <div>
     <video-js id={mediaID} class="video-js vjs-big-play-centered" poster="/screen.png">
-        <source src="https://download-a.akamaihd.net/files/content_assets/ff/502018114_E_cnt_1_r720P.mp4" type="video/mp4" />
+        <track src="https://d34ji3l0qn3w2t.cloudfront.net/9bdbc547-6303-40a2-a283-ff11fbaf7197/1/mwbv_E_202205_07.vtt" kind="subtitles" srclang="en" label="English"/>
+        <source src="https://d34ji3l0qn3w2t.cloudfront.net/e698b557-0f22-4979-91b3-41a62c563712/1/mwbv_E_202205_07_r720P.mp4" type="video/mp4" />
     </video-js>
     <br>
 </div>
