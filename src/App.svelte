@@ -3,10 +3,11 @@
 	import Bookmark from "./Bookmark.svelte";
 	import { bookmarkedWords } from "./store.js";
 	import { fade, slide } from "svelte/transition";
-	import VideoPlayer from "./VideoPlayer.svelte";
+	import MediaPlayer from "./MediaPlayer.svelte";
 
 	let darkMode: boolean = false;
 	let cardIsVisible:boolean = false;
+	let videoIsVisible:boolean = false;
     let cardIsBookmarked:boolean = false;
 	let wordError: boolean = false;
 	let wordEmpty: boolean = false;
@@ -77,20 +78,18 @@
 </script>
 
 {#if cardIsVisible}
-	<div transition:fade={{ duration: 200 }} on:click={() => cardIsVisible = false} class="blur"></div>
+<div transition:fade={{ duration: 200 }} on:click={() => cardIsVisible = false} class="blur"></div>
 {/if}
 
 <div class="dark-mode-btn" class:clicked={darkMode} on:click={() => toggleDarkMode()}>
 	{#if !darkMode}
-		🌞
+	🌞
 	{:else}
-		🌚
+	🌚
 	{/if}
 </div>
 
-<div class="main">
-	<VideoPlayer/>
-
+<div class="main">		
 	<div class="img">
 		<img width="200" src="/main.png" alt="No Bookmarks Found"/>
 	</div>
@@ -98,6 +97,8 @@
 		<h1 id="title">define.me!</h1>
         <input bind:value={inputText} type="text" placeholder="define a word..." class="search-box">
     </form>
+
+	<MediaPlayer darkMode={darkMode} mediaID="A" mediaType="video"/>
 	
 	{#if wordError}
 		<div transition:slide class="error-message">⚠ Please check spelling!</div>
