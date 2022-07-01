@@ -9,11 +9,12 @@
     flex-wrap: wrap;
     margin: 0 auto;
     margin-bottom: 20px;
-    background-color: rgba(190, 190, 190, 0.6);
+    background-color: rgb(190, 190, 190);
     width: 90%;
     font-size: 1.3em;
     color: white;
     line-height: 1;
+    min-width: 170px;
 }
 
 .video-js .vjs-play-group {
@@ -36,13 +37,35 @@
     height: 100%;
 }
 
+.video-js .vjs-settings-group .vjs-subtitles-button {
+    display: block !important;
+}
+
+@media only screen and (max-width: 883px) {
+    .video-js .vjs-play-group {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+    }
+   
+    .video-js .vjs-progress-group {
+        background-color: rgb(190, 190, 190);
+        order: 4;
+        width: 100%;
+    }
+
+    .video-js .vjs-settings-group {
+        order: 3
+    }
+}
+
 .video-js .vjs-big-play-button {
     margin-left: -50px;
     width: 120px;
     height: 120px;
     background-color: rgba(0, 0, 0, 0);
-    color: rgba(190, 190, 190, 0.6);
-    border: 7px solid rgba(190, 190, 190, 0.6);
+    color: rgb(190, 190, 190);
+    border: 7px solid rgb(190, 190, 190);
     border-radius: 50%;
     font-size: 70px;
 }
@@ -53,7 +76,7 @@
 }
 .video-js:hover .vjs-big-play-button {
     background-color: unset;
-    border: 7px solid rgba(190, 190, 190, 0.6);
+    border: 7px solid rgb(190, 190, 190);
 }
 .video-js.vjs-has-started.vjs-paused .vjs-big-play-button {
     display: block;

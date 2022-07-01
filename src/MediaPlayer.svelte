@@ -19,6 +19,7 @@
     let PlayToggle = videojs.getComponent('PlayToggle');
     let VolumePanel = videojs.getComponent('VolumePanel');
     let FullscreenToggle = videojs.getComponent('FullscreenToggle');
+    let SubtitlesButton = videojs.getComponent('SubtitlesButton');
 
     onMount(async () => {
 
@@ -40,23 +41,20 @@
 
         let playGroup = new PlayGroup(mediaPlayer);
         playGroup.addChild(new PlayToggle(mediaPlayer));
-
         mediaPlayer.getChild('ControlBar').addChild(playGroup);
 
         let progressGroup = new ProgressGroup(mediaPlayer);
         progressGroup.addChild(new RemainingTimeDisplay(mediaPlayer));
         progressGroup.addChild(new ProgressControl(mediaPlayer));
         progressGroup.addChild(new DurationDisplay(mediaPlayer));
-
         mediaPlayer.getChild('ControlBar').addChild(progressGroup);
 
         let settingsGroup = new SettingsGroup(mediaPlayer);
-        settingsGroup.addChild(new VolumePanel(mediaPlayer, { inline: false }))
+        settingsGroup.addChild(new VolumePanel(mediaPlayer, { inline: false }));
+        settingsGroup.addChild(new SubtitlesButton(mediaPlayer));
         settingsGroup.addChild(new FullscreenToggle(mediaPlayer));
-        
         mediaPlayer.getChild('ControlBar').addChild(settingsGroup);
     });
-
 
     onDestroy(() => {
         videojs(currentMediaPlayer).dispose();
