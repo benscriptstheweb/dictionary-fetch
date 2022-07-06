@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { bookmarkedWords } from './store.js';
+    import { bookmarkedWords } from '../store.js';
 
     let dispatch = createEventDispatcher();
 

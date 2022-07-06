@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { bookmarkedWords } from './store.js';
+    import { bookmarkedWords } from '../store.js';
     import { fly } from 'svelte/transition';
     import 'animate.css';
 

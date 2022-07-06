@@ -1,17 +1,16 @@
 <script lang="ts">
-	import Dictionary from "./Dictionary.svelte";
-	import Bookmark from "./Bookmark.svelte";
+	import Dictionary from "./components/Dictionary.svelte";
+	import Bookmark from "./components/Bookmark.svelte";
 	import { bookmarkedWords } from "./store.js";
 	import { fade, slide } from "svelte/transition";
-	import MediaPlayer from "./MediaPlayer.svelte";
+    import VideoPlayer from 'svelte-video-player';
 
 	let darkMode: boolean = false;
 	let cardIsVisible:boolean = false;
-	let videoIsVisible:boolean = false;
     let cardIsBookmarked:boolean = false;
 	let wordError: boolean = false;
 	let wordEmpty: boolean = false;
-
+	
 	let inputText:string = '';
 	let bookmarkComponent: any;
 	
@@ -24,7 +23,6 @@
 			partOfSpeech: '',
 		}],
 	}
-
 	let dictionaryData: any = [];
 
 	async function getDictionaryDefinition(searchWord: string) {       
@@ -75,7 +73,20 @@
 		document.body.classList.toggle('dark');
 		document.querySelector('.search-box')?.classList.toggle('dark');
     }
+
+	const poster = '/assets/screen.png';
+	const source = [
+		'https://download-a.akamaihd.net/files/media_periodical/7a/jwbcov_E_201805_15_r480P.mp4',
+		'https://download-a.akamaihd.net/files/media_periodical/e7/jwbcov_E_201805_15.vtt'
+	]
 </script>
+
+<div class="video-wrapper">
+	<VideoPlayer
+		source="https://download-a.akamaihd.net/files/media_periodical/7a/jwbcov_E_201805_15_r480P.mp4"
+		centerIconSize="300px"
+		color='deepskyblue' />
+</div>
 
 {#if cardIsVisible}
 <div transition:fade={{ duration: 200 }} on:click={() => cardIsVisible = false} class="blur"></div>
@@ -97,9 +108,6 @@
 		<h1 id="title">define.me!</h1>
         <input bind:value={inputText} type="text" placeholder="define a word..." class="search-box">
     </form>
-
-	<MediaPlayer darkMode={darkMode} mediaID="A" mediaType="video"/>
-	<MediaPlayer darkMode={darkMode} mediaID="B" mediaType="audio"/>
 	
 	{#if wordError}
 		<div transition:slide class="error-message">⚠ Please check spelling!</div>
@@ -124,6 +132,14 @@
 
 
 <style>
+	.video-wrapper {
+		position: sticky;
+		width: 851px;
+		height: 479px;
+		box-shadow: rgba(0, 0, 0, 0.469) 0px 5px 15px;
+		border-radius: 8px;
+		bottom: 1px;
+	}
 	.dark-mode-btn {
 		position: absolute;
 		top: 20px;
