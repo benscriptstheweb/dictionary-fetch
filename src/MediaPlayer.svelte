@@ -13,13 +13,13 @@
     let mediaPlayer: any;
     let currentMediaPlayer = document.getElementById(mediaID) as HTMLElement;
 
-    let DurationDisplay = videojs.getComponent('DurationDisplay');
-    let RemainingTimeDisplay = videojs.getComponent('RemainingTimeDisplay');
-    let ProgressControl = videojs.getComponent('ProgressControl');
-    let PlayToggle = videojs.getComponent('PlayToggle');
-    let VolumePanel = videojs.getComponent('VolumePanel');
-    let FullscreenToggle = videojs.getComponent('FullscreenToggle');
-    let SubtitlesButton = videojs.getComponent('SubtitlesButton');
+    const DurationDisplay = videojs.getComponent('DurationDisplay');
+    const RemainingTimeDisplay = videojs.getComponent('RemainingTimeDisplay');
+    const ProgressControl = videojs.getComponent('ProgressControl');
+    const PlayToggle = videojs.getComponent('PlayToggle');
+    const VolumePanel = videojs.getComponent('VolumePanel');
+    const FullscreenToggle = videojs.getComponent('FullscreenToggle');
+    const SubtitlesButton = videojs.getComponent('SubtitlesButton');
 
     onMount(async () => {
 
@@ -66,9 +66,7 @@
         for (let controlbar of controlBars) {
             controlbar.style.backgroundColor = "rgba(39, 39, 39, 0.6)";
         }
-    }
-
-    $: if (!darkMode) {
+    } else {
         const controlBars = document.body.querySelectorAll('.vjs-control-bar') as NodeListOf<HTMLElement>;
         
         for (let controlbar of controlBars) {
@@ -87,6 +85,7 @@
     <video-js id={mediaID} class="video-js vjs-big-play-centered" poster="/screen.png">
         <track src="https://d34ji3l0qn3w2t.cloudfront.net/9bdbc547-6303-40a2-a283-ff11fbaf7197/1/mwbv_E_202205_07.vtt" kind="subtitles" srclang="en" label="English"/>
         <source src="https://d34ji3l0qn3w2t.cloudfront.net/e698b557-0f22-4979-91b3-41a62c563712/1/mwbv_E_202205_07_r720P.mp4" type="video/mp4" />
+        <source src="https://d34ji3l0qn3w2t.cloudfront.net/93179444-c2a7-4316-b33e-dfdc0ed56e29/1/mwbv_E_202205_07_r480P.mp4" type="video/mp4" />
     </video-js>
 {:else if mediaType === 'audio'}
     <video-js id={mediaID} class="video-js vjs-big-play-centered audio-video-js" poster="/aud.png">
